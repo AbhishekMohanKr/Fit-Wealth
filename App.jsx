@@ -5,8 +5,8 @@ import { useColorScheme } from 'react-native';
 import HomeScreen from './screens/HomeScreen';
 import ProfileScreen from './screens/ProfileScreen';
 import SettingsScreen from './screens/SettingsScreen';
+import ExerciseScreen from './screens/ExerciseScreen'; // Import the ExerciseScreen
 import Ionicons from 'react-native-vector-icons/Ionicons';  // ✅ Correct
-
 
 const Tab = createBottomTabNavigator();
 
@@ -23,6 +23,7 @@ export default function App() {
             if (route.name === 'Home') iconName = 'home';
             else if (route.name === 'Profile') iconName = 'person';
             else if (route.name === 'Settings') iconName = 'settings';
+            else if (route.name === 'Exercise') iconName = 'barbell'; // Icon for ExerciseScreen
             return <Ionicons name={iconName} size={size} color={color} />;
           },
           tabBarStyle: { backgroundColor: isDark ? '#222' : '#fff' },
@@ -31,6 +32,7 @@ export default function App() {
         })}
       >
         <Tab.Screen name="Home" component={HomeScreen} />
+        <Tab.Screen name="Exercise" component={ExerciseScreen} />
         <Tab.Screen name="Profile" component={ProfileScreen} />
         <Tab.Screen name="Settings" component={SettingsScreen} />
       </Tab.Navigator>
