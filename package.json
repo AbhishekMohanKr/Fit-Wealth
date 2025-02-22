@@ -10,10 +10,14 @@
     "test": "jest"
   },
   "dependencies": {
+    "@react-native-firebase/app": "^21.10.1",
+    "@react-native-firebase/auth": "^21.10.1",
+    "@react-native-firebase/messaging": "^21.10.1",
     "@mediapipe/pose": "^0.5.1675469404",
     "@react-native-community/netinfo": "^11.4.1",
     "@react-navigation/bottom-tabs": "^7.2.0",
     "@react-navigation/native": "^7.0.14",
+    "@react-navigation/stack": "^7.1.1",
     "@tensorflow/tfjs-backend-cpu": "^4.22.0",
     "@tensorflow/tfjs-backend-wasm": "^4.22.0",
     "@tensorflow/tfjs-react-native": "^1.0.0",

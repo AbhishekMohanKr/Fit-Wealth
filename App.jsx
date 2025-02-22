@@ -1,41 +1,26 @@
 import React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
-import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import { useColorScheme } from 'react-native';
-import HomeScreen from './screens/HomeScreen';
-import ProfileScreen from './screens/ProfileScreen';
-import SettingsScreen from './screens/SettingsScreen';
-import ExerciseScreen from './screens/ExerciseScreen'; // Import the ExerciseScreen
-import Ionicons from 'react-native-vector-icons/Ionicons';  // ✅ Correct
+import { createStackNavigator } from '@react-navigation/stack';
+import AuthScreen from './src/screens/AuthScreen';
+import UserProfile from './src/screens/UserProfile';
+import WorkoutMenu from './src/screens/WorkoutMenu';
+import Notifications from './src/screens/Notifications';
+import CryptoMining from './src/screens/CryptoMining';
 
-const Tab = createBottomTabNavigator();
+const Stack = createStackNavigator();
 
-export default function App() {
-  const theme = useColorScheme();
-  const isDark = theme === 'dark';
-
+const App = () => {
   return (
     <NavigationContainer>
-      <Tab.Navigator
-        screenOptions={({ route }) => ({
-          tabBarIcon: ({ color, size }) => {
-            let iconName;
-            if (route.name === 'Home') iconName = 'home';
-            else if (route.name === 'Profile') iconName = 'person';
-            else if (route.name === 'Settings') iconName = 'settings';
-            else if (route.name === 'Exercise') iconName = 'barbell'; // Icon for ExerciseScreen
-            return <Ionicons name={iconName} size={size} color={color} />;
-          },
-          tabBarStyle: { backgroundColor: isDark ? '#222' : '#fff' },
-          tabBarActiveTintColor: isDark ? 'white' : 'black',
-          tabBarInactiveTintColor: 'gray',
-        })}
-      >
-        <Tab.Screen name="Home" component={HomeScreen} />
-        <Tab.Screen name="Exercise" component={ExerciseScreen} />
-        <Tab.Screen name="Profile" component={ProfileScreen} />
-        <Tab.Screen name="Settings" component={SettingsScreen} />
-      </Tab.Navigator>
+      <Stack.Navigator>
+        <Stack.Screen name='Auth' component={AuthScreen} />
+        <Stack.Screen name='Profile' component={UserProfile} />
+        <Stack.Screen name='Workout' component={WorkoutMenu} />
+        <Stack.Screen name='Notifications' component={Notifications} />
+        <Stack.Screen name='Crypto' component={CryptoMining} />
+      </Stack.Navigator>
     </NavigationContainer>
   );
-}
+};
+
+export default App;
